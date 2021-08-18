@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+
+<div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+  <div class="card-header">Attendance</div>
+  <div class="card-body">
+    <div class="form-group my-4">
+    <form class="form-control-file" action="/upload_file" method="POST" enctype="multipart/form-data">
+    <h5 class="card-title">Upload Photo </h5>
+    <input class="card-text" type="file" name="file">
+    <button class="btn btn-warning" type="submit" >Submit</button>
+</form>
+  </div>
+</div>
+
+
+
+  </div>
+
+{% endblock content %}

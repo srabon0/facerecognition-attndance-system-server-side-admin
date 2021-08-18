@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<table class="table table-responsive-sm">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">SL</th>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col" >Email</th>
+          <th scope="col">Contact No</th>
+          <th scope="col">Image</th>
+
+
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in rows %}
+      <tr>
+        <th>{{ loop.index }}</th>
+        <td>{{ row["student_id"] }}</td>
+           <td>{{ row["name"] }}</td>
+          <td>{{ row["email"] }}</td>
+            <td>{{ row["contact"] }}</td>
+        <td>image</td>
+
+      </tr>
+    {% endfor %}
+
+
+
+    </tbody>
+  </table>
+
+</div>
+</div>
+    </div>
+
+
+</section>
+
+
+{% endblock content %}

@@ -1,0 +1,5 @@
+model/**
+datasets/**
+.vscode
+init.ipynb
+.deepnote

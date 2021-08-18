@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="legend"> {{ course }} </h2>
+<table class="table table-responsive-sm">
+    <thead class="thead-dark">
+      <tr>
+
+        <th scope="col">ID</th>
+        <th scope="col" >Day</th>
+          <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in rows %}
+      <tr>
+
+        <td>{{ row["student_id"] }}</td>
+          <td>{{ row["date"] }}</td>
+          <td>{{ row["status"] }}</td>
+
+
+      </tr>
+    {% endfor %}
+
+
+
+    </tbody>
+  </table>
+<button class="btn btn-primary"> Save Offline </button>
+</div>
+</div>
+    </div>
+
+
+</section>
+
+
+{% endblock content %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3>Hi {{ current_user.username }}</h3>
+<p>{{ current_user.phone }}</p>
+<p>{{ current_user.image }}</p>
+
+<img src="static/admin/{{ current_user.image }}" alt="">
+
+<a href="{{ url_for('logout')}}">Logout Here</a>
+{% endblock content  %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+    <div>
+        <h1>Live Video Streaming </h1>
+        <form method="post" action="{{ url_for('tasks') }}">
+            <input type="text" name="dir" placeholder="Student ID" maxlength="7" minlength="7" required >
+
+			<input class="btn btn-warning" type="submit" value="Capture" name="click"/>
+        </form>
+    </div>
+    <h3 style="font-family:courier;">Instructions:</h3>
+			<ol style="font-family:courier;">
+			<li>Insert A student ID </li>
+			<li>Capture--Take  photos from webcame</li>
+            </ol>
+
+{% endblock content %}
