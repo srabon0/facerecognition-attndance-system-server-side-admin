@@ -1,0 +1,4 @@
+CHANGE THESE FOLDER IN YOUR LOCAL MACHINE
+
+UPLOAD_FOLDER = "F:\\mypy\\PycharmProjects\\varsity\\uploaded"
+STATIC_IMAGE = "F:\\mypy\\PycharmProjects\\varsity\\static\\admin"
