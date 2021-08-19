@@ -402,6 +402,24 @@ def tasks():
         return render_template('dataset.html')
     return render_template('dataset.html')
 
+@app.route('/root/', methods = ['GET', 'POST'])
+def handle_request():
+    files_ids = list(request.files)
+    print("\nNumber of Received Images : ", len(files_ids))
+    image_num = 1
+    for file_id in files_ids:
+        print("\nSaving Image ", str(image_num), "/", len(files_ids))
+        imagefile = request.files[file_id]
+        filename = secure_filename(imagefile.filename)
+        print("Image Filename : " + imagefile.filename)
+        timestr = time.strftime("%Y%m%d-%H%M%S")
+        imagefile.save(timestr+'_'+filename)
+        image_num = image_num + 1
+    print("\n")
+    return "Image(s) Uploaded Successfully. Come Back Soon."
+
+
+
 
 if __name__=='__main__':
     app.run(debug=True)

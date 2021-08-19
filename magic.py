@@ -4,7 +4,7 @@ import time
 UPLOAD_FOLDER = "F:\\mypy\\PycharmProjects\\varsity\\uploaded"
 import os
 app = flask.Flask(__name__)
-
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 @app.route('/', methods = ['GET', 'POST'])
 def handle_request():
     files_ids = list(flask.request.files)
@@ -16,9 +16,9 @@ def handle_request():
         filename = werkzeug.utils.secure_filename(imagefile.filename)
         print("Image Filename : " + imagefile.filename)
         timestr = time.strftime("%Y%m%d-%H%M%S")
-        fname = (timestr+'_'+filename)
-        file_loc = os.path.join(app.config['UPLOADED_PHOTOS_DEST'], fname)
-        filename.save(file_loc)
+        filename = timestr +".jpg"
+        file_loc = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        imagefile.save(file_loc)
         image_num = image_num + 1
     print("\n")
     return "Image(s) Uploaded Successfully. Come Back Soon."
