@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+    <div>
+        <h1>Please Enter A Student ID to create dataset</h1>
+        <form method="post" action="{{ url_for('tasks') }}">
+            <input type="text"  name="foldername"  >
+			<input class="btn btn-warning" type="submit" value="Next"/>
+
+        </form>
+    </div>
+{% endblock content %}
+
+<!--
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8  offset-lg-2">
+
+
+            <h2 class="mt-5">Capturing Images for Dataset </h2>
+			<form method="post" action="{{ url_for('tasks') }}">
+			<input type="submit" value="Stop/Start" name="stop" />
+			<input type="submit" value="Capture" name="click"/>
+			</form>
+            <img src="{{ url_for('video_feed') }}" height="80%">
+			<h3 style="font-family:courier;">Instructions:</h3>
+			<ol style="font-family:courier;">
+			<li>Stop/Start--Toggle between stop or start live streaming</li>
+			<li>Capture--Take still-shot and save in the 'shots' directory</li>
+			</ol>
+
+        </div>
+    </div>
+</div>
+</body>
+-->

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+
+<section class="container">
+
+ {% for row in rows %}
+<div class="card mb-3" style="max-width:540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img class="img-fluid" src="/static/students/{{ row['image'] }}" alt="">
+
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{ row["student_id"] }}</h5>
+        <p style="margin-top:-5px" class="card-text text-danger"> <span class="card-text text-success" >SL#{{ loop.index}}</span>  {{ row["name"] }} </p>
+        <p style="margin-top:-10px"  class="card-text "><small class="text-primary">Email: {{row["email"] }}</small></p>
+        <form method="GET">
+              <button class="btn btn-dark" type="submit" value="Update"> <a class="text-white" href="{{ row['id'] }}">Update</a>  </button>
+
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+</section>
+
+
+
+{% endblock content %}

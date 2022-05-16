@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+<section>
+
+    <div class="row">
+<div class="card mt-2 mx-1 my-1 mb-2" style="width: 18rem;">
+  <img class="card-img-top" src="https://support.content.office.net/en-us/media/ff5288dc-d481-40cd-8eba-5b8b9652aeb9.png" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Student Panel</h5>
+    <a href="{{ url_for('add_student') }}" class="btn btn-primary">Add student</a>
+  </div>
+</div>
+
+<div class="card mt-2 mx-1 my-1 mb-2" style="width: 18rem;">
+  <img class="card-img-top" src="https://support.content.office.net/en-us/media/ff5288dc-d481-40cd-8eba-5b8b9652aeb9.png" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Update data</h5>
+    <a href="#" class="btn btn-primary">Update</a>
+  </div>
+</div>
+
+    <div class="card mt-2 mx-1 my-1 mb-2" style="width: 18rem;">
+  <img class="card-img-top" src="https://support.content.office.net/en-us/media/ff5288dc-d481-40cd-8eba-5b8b9652aeb9.png" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Delete</h5>
+    <a href="#" class="btn btn-primary">Delete data</a>
+  </div>
+</div>
+
+<div class="card mt-2 mx-1 my-1 mb-2" style="width: 18rem;">
+  <img class="card-img-top" src="https://support.content.office.net/en-us/media/ff5288dc-d481-40cd-8eba-5b8b9652aeb9.png" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Train Faces</h5>
+    <a href="{{ url_for('train') }}" class="btn btn-primary">Train Faces</a>
+  </div>
+</div>
+
+
+
+<div class="card mt-2 mx-1 my-1 mb-2" style="width: 18rem;">
+  <img class="card-img-top" src="https://support.content.office.net/en-us/media/ff5288dc-d481-40cd-8eba-5b8b9652aeb9.png" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Help line</h5>
+    <a href="#" class="btn btn-primary">Support</a>
+  </div>
+</div>
+        <div class="card mt-2 mx-1 my-1 mb-2" style="width: 18rem;">
+  <img class="card-img-top" src="https://support.content.office.net/en-us/media/ff5288dc-d481-40cd-8eba-5b8b9652aeb9.png" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Download Attendance data</h5>
+    <a href="#" class="btn btn-primary">Download</a>
+  </div>
+</div>
+        <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+     <a href="{{ url_for('viewstudent') }}" class="btn btn-primary">View student</a>
+  </div>
+</div>
+    </div>
+</section>
+
+{% endblock content %}

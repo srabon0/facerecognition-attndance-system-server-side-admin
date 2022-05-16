@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mx-3 " >
+    <div class="row">
+
+
+
+
+
+
+    <table class="table ">
+  <thead>
+    <tr>
+      <th scope="col">SL</th>
+      <th scope="col">Student ID</th>
+        <th scope="col">Date Time</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for face in aq_face %}
+    <tr>
+      <th scope="row">{{loop.index}}</th>
+      <td>{{ face }}</td>
+      <td>{{ time }}</td>
+
+    </tr>
+  {% endfor %}
+
+
+  </tbody>
+</table>
+  <form method="post" action="/attendance">
+  <div class="form-group">
+    <div class="hidden">
+      <input type="text" name="student_id" value="{{ aq_face }}">
+      <input type="text" value="{{ time }}" name="day" >
+    </div>
+    <label for="studentID">ID of Those people to submit</label>
+    {% for face in aq_face %}
+    <input type="text" class="form-control" id="studentID" aria-describedby="emailHelp" value="{{face}}" disabled>
+    {% endfor %}
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+</div>
+</div>
+
+
+
+
+
+{% endblock content %}

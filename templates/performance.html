@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+  <div class="card-header">Student Report </div>
+
+    <h3 class="text-white" > Total class :  {{ total_class * 80 }} mins  </h3>
+    <h3 class="text-white"> Student present: {{ student_present * 80 }} mins  </h3>
+    <h1 class="text-white" > Performance : {{ total_percentage * 80 }} %</h1>
+
+
+   {{ student_present }} /{{ total_class }} = {{ total_percentage }}
+
+
+  </div>
+
+
+
+
+
+
+{% endblock content  %}

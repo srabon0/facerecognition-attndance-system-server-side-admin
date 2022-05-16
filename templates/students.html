@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="container d-flex flex-wrap justify-items-between">
+
+ {% for row in rows %}
+<div class="card mb-3" style="max-width:45%;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img class="img-fluid" src="/static/students/{{ row['image'] }}" alt="">
+
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{ row["student_id"] }}</h5>
+        <p style="margin-top:-5px" class="card-text text-danger"> <span class="card-text text-success" >SL#{{ loop.index}}</span>  {{ row["name"] }} </p>
+        <p style="margin-top:-10px"  class="card-text "><small class="text-primary">Email: {{row["email"] }}</small></p>
+        <!-- Button trigger modal -->
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
+  Delete Student
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Warning</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h2 class="text-danger">
+            Are you sure ?
+        </h2>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+        <form action="/success_record.html">
+              <button class="btn btn-danger " type="submit" value="Update"> <a style="text-decoration:none;" class="text-white" href="{{ row['student_id'] }}"> Delete </a>  </button>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+</section>
+
+
+
+{% endblock content %}

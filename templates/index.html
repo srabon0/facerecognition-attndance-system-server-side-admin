@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+<!--<section>-->
+
+
+
+<!--    <table class="table table-responsive-sm">-->
+<!--          <thead class="thead-dark">-->
+<!--            <tr>-->
+<!--              <th>#</th>-->
+<!--              <th>Student Id</th>-->
+<!--                <th>Name</th>-->
+<!--                <th>Email</th>-->
+<!--                <th>Gender</th>-->
+<!--                <th>Phone</th>-->
+<!--                <th>DOB</th>-->
+<!--            </tr>-->
+<!--          </thead>-->
+<!--          <tbody>-->
+<!--            {% for user in users %}-->
+<!--            <tr>-->
+<!--              <td>{{ loop.index}}</td>-->
+<!--              <td>{{ user[1] }}</td>-->
+<!--                <td>{{ user[2] }}</td>-->
+<!--                <td>{{ user[3] }}</td>-->
+<!--                <td>{{ user[4] }}</td>-->
+<!--                <td>{{ user[5] }}</td>-->
+<!--                <td>{{ user[6] }}</td>-->
+
+<!--            </tr>-->
+<!--            {% endfor %}-->
+<!--          </tbody>-->
+<!--        </table>-->
+
+<!--</section>-->
+
+<section class="container">
+  <div class="d-flex flex-wrap justify-items-space-between align-items-center" >
+
+{% for user in users %}
+<div class="card mb-3" style="width:45%;" >
+  <div class="row g-2">
+    <div class="col-md-4">
+      <img src="static/students/{{ user[7] }}" class="img-fluid w-75 rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{ user[2] }}</h5>
+        <p style="margin-top:-5px" class="card-text text-danger"> <span class="card-text text-success" >SL#{{ loop.index}}</span>  {{ user[1] }} </p>
+        <p style="margin-top:-10px"  class="card-text "><small class="text-primary">Email: {{ user[3] }}<br>    cell:  {{ user[5] }} &nbsp; &nbsp; DOB: {{ user[6] }}  </small></p>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+  </div>
+
+</section>
+
+{% endblock content %}

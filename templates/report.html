@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+  <div class="card-header">Student Report </div>
+  <div class="card-body">
+    <div class="form-group my-4">
+    <form  action="/report" method="POST" >
+      <select name="course" class="custom-select">
+        <option selected>select a course</option>
+        <option  value="Artificial Intelligence">Artificial intelligence</option>
+        <option  value="Data Communication">Data Communication</option>
+        <option  value="Numerical Methods">Numerical Method</option>
+      </select>
+      <br> <br>
+     <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">Student ID</span>
+      </div>
+      <input name="student_id" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+    </div>
+      <br>
+    <button class="btn btn-warning" type="submit" >Submit</button>
+</form>
+  </div>
+</div>
+
+
+
+  </div>
+
+{% endblock content  %}
