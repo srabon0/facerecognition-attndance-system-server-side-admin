@@ -102,7 +102,7 @@ def handle_app_image():
                            (absid, course, day, status,))
 
         connection.commit()
-        file_name = pdfReportGEN(course, day)
+        file_name = pdfReportGEN(day)
         return file_name
 
 @app.route('/download/<file_name>', methods=['GET'])

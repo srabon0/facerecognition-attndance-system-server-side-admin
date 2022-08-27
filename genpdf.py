@@ -1,6 +1,7 @@
+import json
 import time
 import sqlite3 as sql
-from flask import  Response
+from flask import  Response,jsonify
 import random
 import string
 letters = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(20))
@@ -13,22 +14,22 @@ pdf = FPDF()
 
 pdf.add_page()
 ################################for single day
-def pdfReportGEN(course,date):
-    title = f"Attendance report of { course }"
-
-    pdf.set_font('Times', 'B', 20.0)
-    present = f"of The Date: {date}"
-    pdf.ln(10)
-    pdf.cell(200, 0.0, title, align='C')
-    pdf.ln(10)
-    pdf.set_font('Times', 'B', 12.0)
-    pdf.cell(200, 0.0, present, align='C')
-    pdf.ln(10)
-
-    pdf.set_font("Times", size=12)
-
-    line_height = pdf.font_size * 2
-    col_width = pdf.epw / 4  # distribute content evenly
+def pdfReportGEN(date):
+    # title = f"Attendance report of { course }"
+    #
+    # pdf.set_font('Times', 'B', 20.0)
+    # present = f"of The Date: {date}"
+    # pdf.ln(10)
+    # pdf.cell(200, 0.0, title, align='C')
+    # pdf.ln(10)
+    # pdf.set_font('Times', 'B', 12.0)
+    # pdf.cell(200, 0.0, present, align='C')
+    # pdf.ln(10)
+    #
+    # pdf.set_font("Times", size=12)
+    #
+    # line_height = pdf.font_size * 2
+    # col_width = pdf.epw / 4  # distribute content evenly
     with sql.connect("FRASD1test.db") as connection:
         try:
             cursor = connection.cursor()
@@ -38,15 +39,22 @@ def pdfReportGEN(course,date):
                 (date,))
 
             result = cursor.fetchall()
+            # print("result is ", result)
             i = 1
             # print(result)
             for item in result:
                 strID = str(item[0])
-                stdName = item[1].split()[0]
-                stdStatus = item[2]
-                tupdata = (str(i), strID, stdName, stdStatus)
-                strtoTuple = tuple(tupdata)
-                TABLE_DATA.append(strtoTuple)
+                stdName = str(item[1].split()[0])
+                stdStatus = str(item[2])
+                # tupdata = (str(i), strID, stdName, stdStatus)
+                dictData = {
+                    "index": str(i),
+                    "studentId": strID,
+                    "studentName": stdName,
+                    "status": stdStatus
+                }
+
+                TABLE_DATA.append(dictData)
                 i = i + 1
 
 
@@ -54,32 +62,35 @@ def pdfReportGEN(course,date):
             print(e)
         finally:
             cursor.close()
-    print(TABLE_DATA)
+            json_object = json.dumps(TABLE_DATA, indent=4)
+            print(json_object)
+            return  jsonify(json_object)
 
-    def render_table_header():
-        pdf.set_font(style="B")  # enabling bold text
-        for col_name in TABLE_COL_NAMES:
-            pdf.cell(col_width, line_height, col_name, border=1)
-        pdf.ln(line_height)
-        pdf.set_font(style="")  # disabling bold text
-
-    render_table_header()
-    for _ in range(10):  # repeat data rows
-        for row in TABLE_DATA:
-            if pdf.will_page_break(line_height):
-                render_table_header()
-            for datum in row:
-                pdf.cell(col_width, line_height, datum, border=1)
-            pdf.ln(line_height)
-
-    pdf.ln(10)
-
-    pdf.set_font('Times', '', 10.0)
-    pdf.cell(200, 0.0, '- end of report -', align='C')
-    timestr = time.strftime("%Y-%m-%d-%H-%M-%S ")
-    file_name = f"{timestr+letters}.pdf"
-    pdf.output(file_name)
-    return file_name
+    # def render_table_header():
+    #     pdf.set_font(style="B")  # enabling bold text
+    #     for col_name in TABLE_COL_NAMES:
+    #         pdf.cell(col_width, line_height, col_name, border=1)
+    #     pdf.ln(line_height)
+    #     pdf.set_font(style="")  # disabling bold text
+    #
+    # render_table_header()
+    # for _ in range(10):  # repeat data rows
+    #     for row in TABLE_DATA:
+    #         if pdf.will_page_break(line_height):
+    #             render_table_header()
+    #         for datum in row:
+    #             pdf.cell(col_width, line_height, datum, border=1)
+    #         pdf.ln(line_height)
+    #
+    # pdf.ln(10)
+    #
+    # pdf.set_font('Times', '', 10.0)
+    # pdf.cell(200, 0.0, '- end of report -', align='C')
+    # timestr = time.strftime("%Y-%m-%d-%H-%M-%S")
+    # file_name = f"{timestr+letters}.pdf"
+    # pdf.output(file_name)
+    # return file_name
+    #return TABLE_DATA
 
 ##======================================for date between======================================================#############
 
